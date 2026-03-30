@@ -1,0 +1,402 @@
+@import "tailwindcss";
+/* 1. Register your plugins */
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/container-queries";
+
+/* 2. Enable class-based dark mode (replaces darkMode: "class") */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 3. Define your custom theme */
+@theme {
+    /* Fonts */
+    --font-headline: "Plus Jakarta Sans", sans-serif;
+    --font-body: "Plus Jakarta Sans", sans-serif;
+    --font-label: "Plus Jakarta Sans", sans-serif;
+
+    /* Border Radius */
+    --radius: 1rem;
+    /* DEFAULT */
+    --radius-lg: 2rem;
+    /* lg */
+    --radius-xl: 3rem;
+    /* xl */
+    --radius-full: 9999px;
+    /* full */
+
+    /* Colors */
+    --color-on-tertiary: #594d72;
+    --color-primary-dim: #e9b8b8;
+    --color-tertiary-fixed-dim: #d2c2ed;
+    --color-surface-container-highest: #1b2636;
+    --color-primary: #f7c5c5;
+    --color-surface-container-low: #0b1420;
+    --color-secondary-container: #3e4a3b;
+    --color-tertiary-dim: #d2c2ed;
+    --color-surface-variant: #1b2636;
+    --color-on-secondary-fixed-variant: #535f4f;
+    --color-tertiary-fixed: #e0d0fc;
+    --color-surface-dim: #070f19;
+    --color-primary-fixed-dim: #e9b8b8;
+    --color-error: #ff716c;
+    --color-on-surface: #e4ebfb;
+    --color-surface-container-lowest: #000000;
+    --color-tertiary: #ede0ff;
+    --color-on-primary-fixed-variant: #6b4747;
+    --color-on-secondary-container: #c7d4c0;
+    --color-inverse-surface: #f8f9ff;
+    --color-inverse-primary: #7b5555;
+    --color-error-dim: #d7383b;
+    --color-surface: #070f19;
+    --color-inverse-on-surface: #4e5563;
+    --color-surface-container: #101a27;
+    --color-surface-bright: #212d3e;
+    --color-primary-container: #c39595;
+    --color-on-tertiary-container: #514569;
+    --color-on-secondary: #495546;
+    --color-tertiary-container: #e0d0fc;
+    --color-on-tertiary-fixed: #3d3255;
+    --color-on-primary-fixed: #4b2b2c;
+    --color-on-tertiary-fixed-variant: #5a4e73;
+    --color-outline-variant: #414855;
+    --color-on-background: #e4ebfb;
+    --color-secondary: #d9e6d2;
+    --color-on-error-container: #ffa8a3;
+    --color-error-container: #9f0519;
+    --color-surface-tint: #f7c5c5;
+    --color-surface-container-high: #16202f;
+    --color-on-error: #490006;
+    --color-primary-fixed: #f7c5c5;
+    --color-outline: #6e7684;
+    --color-on-surface-variant: #a4abba;
+    --color-secondary-dim: #cbd8c4;
+    --color-on-secondary-fixed: #374234;
+    --color-secondary-fixed-dim: #cbd8c4;
+    --color-on-primary-container: #371a1b;
+    --color-background: #070f19;
+    --color-secondary-fixed: #d9e6d2;
+    --color-on-primary: #613e3f;
+}
+
+
+.no-scrollbar {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+}
+
+
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+    -webkit-appearance: none !important;
+}
+
+
+.no-scrollbar::-webkit-scrollbar-track,
+.no-scrollbar::-webkit-scrollbar-thumb {
+    display: none !important;
+    background: transparent !important;
+}
+
+
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background-color: #070f19;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #e4ebfb;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.clay-card {
+    box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.4), -8px -8px 20px rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+    background: rgba(22, 32, 47, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.clay-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    box-shadow: inset 4px 4px 8px rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.mesh-gradient {
+    background: radial-gradient(at 0% 0%, rgba(247, 197, 197, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(217, 230, 210, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(224, 208, 252, 0.1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(11, 20, 32, 0.1) 0px, transparent 50%);
+}
+
+.pill-active {
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.clay-text {
+    position: relative;
+    /* Your base color */
+    color: #1b2636;
+
+    text-shadow:
+        12px 12px 24px rgba(0, 0, 0, 0.6),
+        -8px -8px 20px rgba(255, 255, 255, 0.04);
+
+
+    display: inline-block;
+}
+
+.clay-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+
+
+
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            /* Top-left inner highlight */
+            rgba(255, 255, 255, 0) 30%,
+            /* Fade to clear */
+            rgba(0, 0, 0, 0) 70%,
+            /* Stay clear */
+            rgba(0, 0, 0, 0.4) 100%
+            /* Bottom-right inner shadow */
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.ambient-glow {
+    position: fixed;
+    width: 60vmax;
+    height: 60vmax;
+    border-radius: 100%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.15;
+}
+
+
+.clay-inset {
+    box-shadow: inset 4px 4px 8px rgba(255, 255, 255, 0.05);
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+
+
+
+.clay-pill {
+    background: rgba(30, 41, 59, 0.8);
+    box-shadow:
+        8px 8px 16px rgba(0, 0, 0, 0.4),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    /* Add transition here to make the glow fade in smoothly */
+    transition: box-shadow 0.5s ease;
+}
+
+
+
+.group:hover .clay-pill.glow-primary {
+    box-shadow:
+        0 0 40px rgba(247, 197, 197, 0.3),
+        /* The new glow */
+        8px 8px 16px rgba(0, 0, 0, 0.4),
+        /* The base dark shadow */
+        inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+    /* The base inset highlight */
+}
+
+
+
+.group:hover .clay-pill.glow-secondary {
+    box-shadow:
+        0 0 40px rgba(217, 230, 210, 0.3),
+        8px 8px 16px rgba(0, 0, 0, 0.4),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+
+
+.group:hover .clay-pill.glow-tertiary {
+    box-shadow:
+        0 0 40px rgba(224, 208, 252, 0.3),
+        8px 8px 16px rgba(0, 0, 0, 0.4),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+
+.clay-button-primary {
+    background: #f7c5c5;
+    color: #4b2b2c;
+    box-shadow:
+        0 10px 25px rgba(247, 197, 197, 0.2),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.clay-button-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.mesh-gradient-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--bg-deep);
+}
+
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: move 20s infinite alternate;
+}
+
+
+@keyframes move {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(100px, 100px) scale(1.2);
+    }
+}
+
+
+.bow-arc {
+    border: 2px solid transparent;
+    border-top-color: rgba(247, 197, 197, 0.4);
+    border-radius: 50%;
+    filter: blur(4px);
+    box-shadow: 0 -20px 40px rgba(247, 197, 197, 0.1);
+}
+
+
+.text-glow {
+    text-shadow: 0 0 40px rgba(247, 197, 197, 0.4);
+}
+
+
+.viewport-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(120%) translateY(20px) scale(0.9);
+        opacity: 0;
+    }
+
+    70% {
+        transform: translateX(-10%) translateY(20px) scale(1.02);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0) translateY(20px) scale(1);
+        opacity: 1;
+    }
+}
+
+
+.clay-notification {
+    background: #16202f;
+    box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.4),
+        -8px -8px 20px rgba(255, 255, 255, 0.02),
+        inset 4px 4px 8px rgba(255, 255, 255, 0.05);
+    border-radius: 2rem;
+    animation: slideIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+
+.clay-btn-inner {
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(255, 255, 255, 0.05);
+}
+
+
+.clay-text {
+    color: color-mix(in srgb, var(--color-on-surface) 90%, transparent);
+    text-shadow:
+        8px 8px 16px color-mix(in srgb, var(--color-surface-container-lowest) 60%, transparent),
+        -4px -4px 12px color-mix(in srgb, var(--color-on-surface) 5%, transparent);
+
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--color-on-surface) 10%, transparent);
+
+    font-family: var(--font-headline);
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+
+.clay-text-puffy {
+    background: linear-gradient(135deg,
+            color-mix(in srgb, var(--color-surface-bright) 90%, transparent) 0%,
+            color-mix(in srgb, var(--color-surface-container) 90%, transparent) 100%);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+    color: transparent;
+
+    filter:
+        drop-shadow(8px 8px 12px color-mix(in srgb, var(--color-surface-container-lowest) 50%, transparent)) drop-shadow(-4px -4px 10px color-mix(in srgb, var(--color-on-surface) 5%, transparent));
+
+
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--color-on-surface) 10%, transparent);
+
+    font-family: var(--font-headline);
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
