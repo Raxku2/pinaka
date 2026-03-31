@@ -1,8 +1,7 @@
 import { h } from 'preact';
 import { useRef, useEffect } from 'preact/hooks';
 import ProjectTile from '../projectCards/Tile';
-import { useHighlightedProjectsStore } from '../../../stores/app/projects/useHighlightProjectsStore';
-
+import { useHighlightedProjectsStore } from '../../../stores';
 import Swiper from 'swiper';
 import { Navigation, FreeMode } from 'swiper/modules';
 import 'swiper/css';
@@ -76,21 +75,20 @@ const PrSlideContainer = () => {
             </div>
 
 
+            {/* // Inside PrSlideContainer.js ... */}
+
             <div class="w-full overflow-x-hidden py-8">
-
-
                 <div
                     ref={swiperContainerRef}
                     class="swiper overflow-visible! px-6"
                 >
-                    <div class="swiper-wrapper flex items-center">
+                    {/* Removed 'flex items-stretch' -> Let Swiper's CSS handle this wrapper */}
+                    <div class="swiper-wrapper">
                         {highlitedProjects.map((project, index) => (
                             <div
                                 key={index}
-
-                                class="swiper-slide w-max! backface-hidden transform-gpu"
+                                class="swiper-slide h-auto! flex min-w-[80vw] max-w-[80vw] md:max-w-150 md:min-w-150 backface-hidden transform-gpu"
                                 style={{
-
                                     WebkitFontSmoothing: 'antialiased',
                                     transform: 'translateZ(0)'
                                 }}

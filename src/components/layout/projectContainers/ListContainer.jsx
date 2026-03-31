@@ -4,13 +4,13 @@ import { useOtherProjectsStore } from '../../../stores';
 import { useEffect } from 'preact/hooks';
 
 const PrListContainer = () => {
-    const { othersProjects } = useOtherProjectsStore();
+    const { othersProjects, projectCount } = useOtherProjectsStore();
 
-    useEffect(() => {
-        console.log(othersProjects);
+    // useEffect(() => {
+    //     console.log(othersProjects);
 
 
-    }, [othersProjects]);
+    // }, [othersProjects]);
 
     return (
         <section class="mb-32">
@@ -19,7 +19,7 @@ const PrListContainer = () => {
                     <span class="text-rose-300 font-bold tracking-[0.2em] text-xs uppercase">The Archives</span>
                     <h2 class="text-4xl font-bold tracking-tight">Technical Repos</h2>
                 </div>
-                <button class="text-primary font-bold hover:underline underline-offset-8 transition-all">View All 42 Projects</button>
+                <button class="text-primary font-bold hover:underline underline-offset-8 transition-all cursor-pointer">View All {projectCount} Projects</button>
             </div>
             <div class="space-y-6">
 
