@@ -14,7 +14,6 @@ const ProjectTile = ({ project = null }) => {
     const [tags, setTags] = useState([]);
     const [repo, setRepo] = useState(null);
     const [deployment, setDeployment] = useState(null);
-    const [contributor, setContributor] = useState(null);
 
 
     useEffect(() => {
@@ -56,10 +55,10 @@ const ProjectTile = ({ project = null }) => {
         }
 
 
-        if (project.tags && project.tags != null) {
+        if (project.tags && project.tags != []) {
             setTags(project.tags);
         } else {
-            setTags(null);
+            setTags([]);
         }
 
 
@@ -76,12 +75,6 @@ const ProjectTile = ({ project = null }) => {
             setDeployment(null);
         }
 
-
-        if (project.contributors && project.contributors != null) {
-            setContributor(project.contributors);
-        } else {
-            setContributor(null);
-        }
 
 
     }, [project]);
@@ -114,12 +107,12 @@ const ProjectTile = ({ project = null }) => {
             </div>
 
             <div class="px-4 pb-4 flex flex-col flex-1">
-                
+
                 <div class="flex justify-between items-start mb-4 gap-4">
 
 
                     <div class="flex-1 min-w-0">
-                        
+
                         <h3
                             class="text-3xl font-bold mb-2 line-clamp-2 wrap-break-word"
                             title={title}
@@ -142,13 +135,13 @@ const ProjectTile = ({ project = null }) => {
                     </div>
                 </div>
 
-                <div class="flex flex-wrap gap-2 mb-8">
+                {tags && <div class="flex flex-wrap gap-2 mb-8">
                     {tags.slice(0, 3).map((tag, index) => (
                         <span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-secondary text-xs font-bold tracking-wider uppercase"
                             key={index}
                         >{tag}</span>
                     ))}
-                </div>
+                </div>}
 
                 <div class="flex items-center justify-between pt-6 mt-auto border-t border-outline-variant/10">
                     <div class="flex gap-3">

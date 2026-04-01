@@ -1,10 +1,11 @@
 import { h, Component } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { useNotification } from '../../../hooks';
+import { useProjectDomainIconStore } from '../../../stores';
 
 const ProjectRow = ({ project }) => {
 
-
+    const { iconMap } = useProjectDomainIconStore();
     const { popNotification } = useNotification();
 
     const [id, setId] = useState(null);
@@ -13,50 +14,60 @@ const ProjectRow = ({ project }) => {
     const [tags, setTags] = useState([]);
     const [repo, setRepo] = useState(null);
     const [deployment, setDeployment] = useState(null);
+    const [domain, setDomain] = useState('code');
 
 
     useEffect(() => {
         // console.log(project);
 
-        if (project.id && project.id != null) {
+        if (project.id && project.id != "") {
             setId(project.id);
         } else {
             setId(null);
         }
 
 
-        if (project.title && project.title != null) {
+        if (project.title && project.title != "") {
             setTitle(project.title);
         } else {
             setTitle(null);
         }
 
 
-        if (project.description && project.description != null) {
+        if (project.description && project.description != "") {
             setDescription(project.description);
         } else {
             setDescription(null);
         }
 
 
-        if (project.tags && project.tags != null) {
+        if (project.tags && project.tags != []) {
             setTags(project.tags);
         } else {
             setTags([]);
         }
 
 
-        if (project.repo && project.repo != null) {
+        if (project.repo && project.repo != "") {
             setRepo(project.repo);
         } else {
             setRepo(null);
         }
 
 
-        if (project.deployment && project.deployment != null) {
+        if (project.deployment && project.deployment != "") {
             setDeployment(project.deployment);
         } else {
             setDeployment(null);
+        }
+
+
+        if (project.domain && project.domain != "") {
+            console.log(project.domain);
+            
+            setDomain(iconMap[project.domain]);
+        } else {
+            setDomain('code');
         }
 
 
@@ -81,7 +92,32 @@ const ProjectRow = ({ project }) => {
         <div class="w-full bg-surface-container-low hover:bg-surface-container-high rounded-lg p-6 flex flex-col md:flex-row items-center justify-between gap-8 transition-all duration-500 clay-card group">
             <div class="flex items-center gap-6 w-full md:w-1/3">
                 <div class="w-14 h-14 shrink-0 bg-surface-container-highest rounded-full flex items-center justify-center text-primary transition-colors duration-500 group-hover:bg-primary group-hover:text-on-primary">
-                    <span class="material-symbols-outlined">terminal</span>
+
+
+                    {/* fullstack */}
+                    {/* <span class="material-symbols-outlined">layers</span> */}
+                    {/* frontend */}
+                    {/* <span class="material-symbols-outlined">web</span> */}
+                    {/* backend */}
+                    {/* <span class="material-symbols-outlined">dns</span> */}
+                    {/* database */}
+                    {/* <span class="material-symbols-outlined">database</span> */}
+                    {/* api */}
+                    {/* <span class="material-symbols-outlined">api</span> */}
+                    {/* cli */}
+                    {/* <span class="material-symbols-outlined">terminal</span> */}
+                    {/* gui  */}
+                    {/* <span class="material-symbols-outlined">web_asset</span> */}
+                    {/* tui  */}
+                    {/* <span class="material-symbols-outlined">wysiwyg</span> */}
+                    {/* Services  */}
+                    {/* <span class="material-symbols-outlined">smart_toy</span> */}
+                    {/* iot  */}
+                    {/* <span class="material-symbols-outlined">devices_other</span> */}
+                    {/* electronics  */}
+                    <span class="material-symbols-outlined">{domain}</span>
+
+
                 </div>
                 <div>
                     <h4 class="text-xl font-bold">{title}</h4>

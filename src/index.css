@@ -8,73 +8,81 @@
 
 /* 3. Define your custom theme */
 @theme {
-    /* Fonts */
+    /* --- Fonts --- */
     --font-headline: "Plus Jakarta Sans", sans-serif;
     --font-body: "Plus Jakarta Sans", sans-serif;
     --font-label: "Plus Jakarta Sans", sans-serif;
 
-    /* Border Radius */
+    /* --- Border Radius --- */
     --radius: 1rem;
-    /* DEFAULT */
     --radius-lg: 2rem;
-    /* lg */
     --radius-xl: 3rem;
-    /* xl */
     --radius-full: 9999px;
-    /* full */
 
-    /* Colors */
-    --color-on-tertiary: #594d72;
-    --color-primary-dim: #e9b8b8;
-    --color-tertiary-fixed-dim: #d2c2ed;
-    --color-surface-container-highest: #1b2636;
+    /* --- Brand: Primary (Reds/Pinks) --- */
     --color-primary: #f7c5c5;
-    --color-surface-container-low: #0b1420;
-    --color-secondary-container: #3e4a3b;
-    --color-tertiary-dim: #d2c2ed;
-    --color-surface-variant: #1b2636;
-    --color-on-secondary-fixed-variant: #535f4f;
-    --color-tertiary-fixed: #e0d0fc;
-    --color-surface-dim: #070f19;
-    --color-primary-fixed-dim: #e9b8b8;
-    --color-error: #ff716c;
-    --color-on-surface: #e4ebfb;
-    --color-surface-container-lowest: #000000;
-    --color-tertiary: #ede0ff;
-    --color-on-primary-fixed-variant: #6b4747;
-    --color-on-secondary-container: #c7d4c0;
-    --color-inverse-surface: #f8f9ff;
-    --color-inverse-primary: #7b5555;
-    --color-error-dim: #d7383b;
-    --color-surface: #070f19;
-    --color-inverse-on-surface: #4e5563;
-    --color-surface-container: #101a27;
-    --color-surface-bright: #212d3e;
-    --color-primary-container: #c39595;
-    --color-on-tertiary-container: #514569;
-    --color-on-secondary: #495546;
-    --color-tertiary-container: #e0d0fc;
-    --color-on-tertiary-fixed: #3d3255;
-    --color-on-primary-fixed: #4b2b2c;
-    --color-on-tertiary-fixed-variant: #5a4e73;
-    --color-outline-variant: #414855;
-    --color-on-background: #e4ebfb;
-    --color-secondary: #d9e6d2;
-    --color-on-error-container: #ffa8a3;
-    --color-error-container: #9f0519;
-    --color-surface-tint: #f7c5c5;
-    --color-surface-container-high: #16202f;
-    --color-on-error: #490006;
-    --color-primary-fixed: #f7c5c5;
-    --color-outline: #6e7684;
-    --color-on-surface-variant: #a4abba;
-    --color-secondary-dim: #cbd8c4;
-    --color-on-secondary-fixed: #374234;
-    --color-secondary-fixed-dim: #cbd8c4;
-    --color-on-primary-container: #371a1b;
-    --color-background: #070f19;
-    --color-secondary-fixed: #d9e6d2;
     --color-on-primary: #613e3f;
+    --color-primary-container: #c39595;
+    --color-on-primary-container: #371a1b;
+    --color-primary-dim: #e9b8b8;
+    --color-primary-fixed: #f7c5c5;
+    --color-primary-fixed-dim: #e9b8b8;
+    --color-on-primary-fixed: #4b2b2c;
+    --color-on-primary-fixed-variant: #6b4747;
+    --color-inverse-primary: #7b5555;
+
+    /* --- Brand: Secondary (Greens/Sage) --- */
+    --color-secondary: #d9e6d2;
+    --color-on-secondary: #495546;
+    --color-secondary-container: #3e4a3b;
+    --color-on-secondary-container: #c7d4c0;
+    --color-secondary-dim: #cbd8c4;
+    --color-secondary-fixed: #d9e6d2;
+    --color-secondary-fixed-dim: #cbd8c4;
+    --color-on-secondary-fixed: #374234;
+    --color-on-secondary-fixed-variant: #535f4f;
+
+    /* --- Brand: Tertiary (Purples/Lavenders) --- */
+    --color-tertiary: #ede0ff;
+    --color-on-tertiary: #594d72;
+    --color-tertiary-container: #e0d0fc;
+    --color-on-tertiary-container: #514569;
+    --color-tertiary-dim: #d2c2ed;
+    --color-tertiary-fixed: #e0d0fc;
+    --color-tertiary-fixed-dim: #d2c2ed;
+    --color-on-tertiary-fixed: #3d3255;
+    --color-on-tertiary-fixed-variant: #5a4e73;
+
+    /* --- Neutral: Surfaces & Background --- */
+    --color-background: #070f19;
+    --color-on-background: #e4ebfb;
+    --color-surface: #070f19;
+    --color-on-surface: #e4ebfb;
+    --color-surface-variant: #1b2636;
+    --color-on-surface-variant: #a4abba;
+    --color-surface-dim: #070f19;
+    --color-surface-bright: #212d3e;
+    --color-surface-tint: #f7c5c5;
+
+    /* --- Surface Containers --- */
+    --color-surface-container-lowest: #000000;
+    --color-surface-container-low: #0b1420;
+    --color-surface-container: #101a27;
+    --color-surface-container-high: #16202f;
+    --color-surface-container-highest: #1b2636;
+
+    /* --- Utility: Inverse & Outlines --- */
+    --color-inverse-surface: #f8f9ff;
+    --color-inverse-on-surface: #4e5563;
+    --color-outline: #6e7684;
+    --color-outline-variant: #414855;
+
+    /* --- Status: Error --- */
+    --color-error: #ff716c;
+    --color-on-error: #490006;
+    --color-error-container: #9f0519;
+    --color-on-error-container: #ffa8a3;
+    --color-error-dim: #d7383b;
 }
 
 
@@ -134,6 +142,10 @@ body {
     border-radius: inherit;
     box-shadow: inset 4px 4px 8px rgba(255, 255, 255, 0.05);
     pointer-events: none;
+}
+
+.clay-card-inner {
+    box-shadow: inset 4px 4px 8px rgba(255, 255, 255, 0.05);
 }
 
 .mesh-gradient {
